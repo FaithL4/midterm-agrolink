@@ -1,0 +1,17 @@
+{
+  "name": "agrolink-root",
+  "version": "1.0.0",
+  "description": "Unified runner for AgroLink (React Frontend + Django Backend)",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix project",
+    "backend:migrate": "cd backend && python manage.py migrate",
+    "backend:seed": "cd backend && python manage.py seed_data",
+    "backend:setup": "cd backend && python manage.py migrate && python manage.py seed_data",
+    "backend": "cd backend && python manage.py runserver",
+    "frontend": "cd project && npm run dev",
+    "start": "concurrently --kill-others-on-fail --names \"backend,frontend\" --prefix-colors \"blue,green\" \"npm run backend\" \"npm run frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
